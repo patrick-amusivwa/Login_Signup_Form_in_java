@@ -1,23 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
          new LoginForm();
     }
 }
-class LoginForm extends JFrame{
+class LoginForm extends JFrame implements ActionListener {
+
+    //-----------------------------------JDBC-------------------------
+    
+
+    //---------------------------------------------------------------
     ImageIcon loginIcon =  new ImageIcon("src/assets/loginIcon.png");
-    myPanels PFname,plname,PUname,PEmail , radioButtons;
+    myPanels PFname,Plname,PUname,PEmail , radioButtons;
 
 
 
-    JTextField Tfname,Tlname,FUame ,TEmail = new myTextFields();
+    JTextField Tfname,Tlname,TUame ,TEmail = new myTextFields();
     JLabel LFname, Llname,LUname,LEmail;
 
 
-    JRadioButton male = new JRadioButton();
-    JRadioButton female = new JRadioButton();
+
+    JButton submit  =  new JButton("submit");
+
 
 
     LoginForm(){
@@ -36,12 +44,12 @@ class LoginForm extends JFrame{
 
 
         LUname = new JLabel();
-        LUname.setText("last name:");
+        LUname.setText("user name:");
         LUname.setHorizontalTextPosition(0);
         LUname.setVerticalTextPosition(0);
 
         LEmail = new JLabel();
-        LEmail.setText("last name:");
+        LEmail.setText("email:");
         LEmail.setHorizontalTextPosition(0);
         LEmail.setVerticalTextPosition(0);
 
@@ -52,12 +60,25 @@ class LoginForm extends JFrame{
         PFname.add(Tfname);
         PFname.setBounds(10,10,300,40);
 
+        Tlname = new myTextFields();
+        Plname = new myPanels();
+        Plname.add(Llname);
+        Plname.add(Tlname);
+        Plname.setBounds(10,60,300,40);
 
+        TUame = new myTextFields();
+        PUname = new myPanels();
+        PUname.add(LUname);
+        PUname.add(TUame);
+        PUname.setBounds(10,140,300,40);
 
+        TEmail = new myTextFields();
+        PEmail = new myPanels();
+        PEmail.add(LEmail);
+        PEmail.add(TEmail);
+        PEmail.setBounds(10,195,300,40);
 
-
-
-
+        submit.setBounds(120,250,100,30);
 
         //------------------JFrame properties----------------//
         this.setSize(400,700);
@@ -69,6 +90,11 @@ class LoginForm extends JFrame{
 
         //-----------------adding panels------------------------//
         this.add(PFname);
+        this.add(Plname);
+        this.add(PUname);
+        this.add(PEmail);
+        this.add(submit);
+
 
         //----------------------------------------------------------
 
@@ -80,6 +106,12 @@ class LoginForm extends JFrame{
 
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == submit){
+
+        }
+    }
 }
 class SignupForm extends JFrame{
     SignupForm(){
